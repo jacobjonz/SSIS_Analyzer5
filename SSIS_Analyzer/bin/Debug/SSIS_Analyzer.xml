@@ -1,0 +1,144 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SSIS_Analyzer
+</name>
+</assembly>
+<members>
+<member name="T:WindowsApplication1.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:WindowsApplication1.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:WindowsApplication1.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:WindowsApplication1.Export.batchExportWord(System.Collections.Generic.List{System.String},System.String)">
+ <summary>
+ Takes a list of packages and their path and exports each destination and it's source to Word
+ </summary>
+ <param name="packages"></param>
+ <param name="currPackagePath"></param>
+</member>
+<member name="M:WindowsApplication1.Export.exportWord(WindowsApplication1.SqlSourceProperties,WindowsApplication1.SqlDestProperties,System.String,System.String,System.String,System.String,Microsoft.Office.Interop.Word.Application)">
+ <summary>
+ Exports SqlSource/DestProperties and the project and path into a Word document.
+     Optionally asks user where to save file
+ </summary>
+ <param name="sqlSource"></param>
+ <param name="sqlDest"></param>
+ <param name="curProject"></param>
+ <param name="currPath"></param>
+ <param name="filepath"></param>
+ <param name="fileName"></param>
+ <param name="oWord"></param>
+</member>
+<member name="M:WindowsApplication1.Export.bkmrk(Microsoft.Office.Interop.Word.Document,System.String,System.String)">
+ <summary>
+ Puts the text at a bookmark in the Word document
+ </summary>
+ <param name="oDoc"></param>
+ <param name="bookmark"></param>
+ <param name="text"></param>
+</member>
+<member name="M:WindowsApplication1.Export.exportCSV(WindowsApplication1.SqlSourceProperties,WindowsApplication1.SqlDestProperties,System.String)">
+ <summary>
+ Converts the columns from Source/Destination and saves it as the fileName
+ </summary>
+ <param name="sqlSource"></param>
+ <param name="sqlDest"></param>
+ <param name="fileName"></param>
+</member>
+<member name="M:WindowsApplication1.Export.dataTypes">
+ <summary>
+ Returns a dictionary of T-SQL variable types and a description
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:WindowsApplication1.Export.CreateTableFromString(Microsoft.Office.Interop.Word.Range@,System.Collections.Generic.List{System.String}[]@)">
+ <summary>
+ Converts a list of data into a table at the Word Range
+ </summary>
+ <param name="rng"></param>
+ <param name="adata"></param>
+</member>
+<member name="M:WindowsApplication1.Export.BuildDataString(System.Collections.Generic.List{System.String}[])">
+ <summary>
+ Builds a delimited table from a list of list of strings
+ </summary>
+ <param name="aData"></param>
+ <returns></returns>
+</member>
+<member name="M:WindowsApplication1.JobViewer.GetDataTable(System.String)">
+ <summary>
+ Creates a DataTable filled from the results of SQL command
+ </summary>
+ <param name="SQL"></param>
+ <returns></returns>
+</member>
+<member name="M:WindowsApplication1.JobViewer.getExecutionID(System.Int32)">
+ <summary>
+ Returns the ExecutionID from the row of the current job's Enum History
+ </summary>
+ <param name="row"></param>
+ <returns></returns>
+</member>
+<member name="M:WindowsApplication1.JobViewer.updateOverview">
+ <summary>
+ Update the form for the current job
+ </summary>
+</member>
+<member name="M:WindowsApplication1.JobViewer.sqlExecutionInfoStatement(System.Int32[])">
+ <summary>
+ Returns the SQL statement from #Chris_Waller for execution history.
+ Adds each execution id to the SQL.
+ </summary>
+ <param name="execId"></param>
+ <returns></returns>
+</member>
+<member name="M:WindowsApplication1.SqlDestProperties.findSource(System.Xml.XmlReader)">
+ <summary>
+ Accepts a blank XmlReader and finds the source attached to this destination
+ </summary>
+ <param name="read"></param>
+ <returns></returns>
+</member>
+<member name="M:WindowsApplication1.SqlSourceProperties.setup(System.Xml.XmlReader)">
+ <summary>
+ Takes an XmlReader at the location of the Source
+ </summary>
+ <param name="reader"></param>
+</member>
+<member name="M:WindowsApplication1.SqlSourceProperties.findDestination(System.Xml.XmlReader,System.String)">
+ <summary>
+ Accepts a blank XmlReader and finds the destination attached to this source
+ </summary>
+ <param name="read"></param>
+ <param name="file"></param>
+ <returns></returns>
+</member>
+<member name="M:WindowsApplication1.SsisViewer.addFileToTree(System.String)">
+ <summary>
+ Adds a project to the tree node. Returns false if user cancels file save
+ </summary>
+ <param name="searchDirectory"></param>
+ <returns>True or False if user cancels</returns>
+</member>
+<member name="M:WindowsApplication1.SsisViewer.removeNodeType(System.String)">
+ <summary>
+ Removes types of nodes from the end of the name
+ </summary>
+ <param name="nodeName"></param>
+ <returns></returns>
+</member>
+</members>
+</doc>
