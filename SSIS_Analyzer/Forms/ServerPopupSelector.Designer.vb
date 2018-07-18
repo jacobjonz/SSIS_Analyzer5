@@ -22,6 +22,7 @@ Partial Class ServerPopupSelector
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.serverComboBox = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -42,10 +43,17 @@ Partial Class ServerPopupSelector
         Me.saveCheckBox = New System.Windows.Forms.CheckBox()
         Me.otherLoginRadioButton = New System.Windows.Forms.RadioButton()
         Me.windowsAuthRadioButton = New System.Windows.Forms.RadioButton()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.packagePanel = New System.Windows.Forms.Panel()
+        Me.jobPanel = New System.Windows.Forms.Panel()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.jobComboBox = New System.Windows.Forms.ComboBox()
         Me.topPanel.SuspendLayout()
         Me.topInternalPanel.SuspendLayout()
         Me.bottomPanel.SuspendLayout()
         Me.expandablePanel.SuspendLayout()
+        Me.packagePanel.SuspendLayout()
+        Me.jobPanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -67,6 +75,7 @@ Partial Class ServerPopupSelector
         Me.serverComboBox.Name = "serverComboBox"
         Me.serverComboBox.Size = New System.Drawing.Size(246, 21)
         Me.serverComboBox.TabIndex = 1
+        Me.ToolTip1.SetToolTip(Me.serverComboBox, "Only select a server to view all projects on the server")
         '
         'Label2
         '
@@ -82,7 +91,7 @@ Partial Class ServerPopupSelector
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.18868!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(58, 82)
+        Me.Label3.Location = New System.Drawing.Point(58, 63)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(104, 20)
         Me.Label3.TabIndex = 4
@@ -93,15 +102,17 @@ Partial Class ServerPopupSelector
         Me.projectComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
         Me.projectComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList
         Me.projectComboBox.FormattingEnabled = True
-        Me.projectComboBox.Location = New System.Drawing.Point(197, 81)
+        Me.projectComboBox.Location = New System.Drawing.Point(197, 62)
         Me.projectComboBox.Name = "projectComboBox"
         Me.projectComboBox.Size = New System.Drawing.Size(246, 21)
         Me.projectComboBox.TabIndex = 3
+        Me.ToolTip1.SetToolTip(Me.projectComboBox, "Don't select a project name to get all projects in a folder")
         '
         'okBttn
         '
+        Me.okBttn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.okBttn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.okBttn.Location = New System.Drawing.Point(197, 33)
+        Me.okBttn.Location = New System.Drawing.Point(197, 5)
         Me.okBttn.Name = "okBttn"
         Me.okBttn.Size = New System.Drawing.Size(86, 36)
         Me.okBttn.TabIndex = 5
@@ -112,7 +123,7 @@ Partial Class ServerPopupSelector
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.18868!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(58, 42)
+        Me.Label4.Location = New System.Drawing.Point(58, 23)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(100, 20)
         Me.Label4.TabIndex = 7
@@ -123,10 +134,11 @@ Partial Class ServerPopupSelector
         Me.folderComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
         Me.folderComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList
         Me.folderComboBox.FormattingEnabled = True
-        Me.folderComboBox.Location = New System.Drawing.Point(197, 41)
+        Me.folderComboBox.Location = New System.Drawing.Point(197, 22)
         Me.folderComboBox.Name = "folderComboBox"
         Me.folderComboBox.Size = New System.Drawing.Size(246, 21)
         Me.folderComboBox.TabIndex = 6
+        Me.ToolTip1.SetToolTip(Me.folderComboBox, "Don't select a folder to search for a project")
         '
         'topPanel
         '
@@ -140,12 +152,10 @@ Partial Class ServerPopupSelector
         '
         'topInternalPanel
         '
+        Me.topInternalPanel.Controls.Add(Me.jobPanel)
+        Me.topInternalPanel.Controls.Add(Me.packagePanel)
         Me.topInternalPanel.Controls.Add(Me.serverComboBox)
-        Me.topInternalPanel.Controls.Add(Me.Label4)
         Me.topInternalPanel.Controls.Add(Me.Label2)
-        Me.topInternalPanel.Controls.Add(Me.folderComboBox)
-        Me.topInternalPanel.Controls.Add(Me.projectComboBox)
-        Me.topInternalPanel.Controls.Add(Me.Label3)
         Me.topInternalPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.topInternalPanel.Location = New System.Drawing.Point(0, 64)
         Me.topInternalPanel.Name = "topInternalPanel"
@@ -156,9 +166,9 @@ Partial Class ServerPopupSelector
         '
         Me.bottomPanel.Controls.Add(Me.okBttn)
         Me.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.bottomPanel.Location = New System.Drawing.Point(0, 419)
+        Me.bottomPanel.Location = New System.Drawing.Point(0, 215)
         Me.bottomPanel.Name = "bottomPanel"
-        Me.bottomPanel.Size = New System.Drawing.Size(502, 100)
+        Me.bottomPanel.Size = New System.Drawing.Size(502, 44)
         Me.bottomPanel.TabIndex = 9
         '
         'expandablePanel
@@ -174,7 +184,7 @@ Partial Class ServerPopupSelector
         Me.expandablePanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.expandablePanel.Location = New System.Drawing.Point(0, 184)
         Me.expandablePanel.Name = "expandablePanel"
-        Me.expandablePanel.Size = New System.Drawing.Size(502, 235)
+        Me.expandablePanel.Size = New System.Drawing.Size(502, 31)
         Me.expandablePanel.TabIndex = 10
         '
         'useDefaultCheckBox
@@ -214,24 +224,26 @@ Partial Class ServerPopupSelector
         'passwordTextBox
         '
         Me.passwordTextBox.Enabled = False
-        Me.passwordTextBox.Location = New System.Drawing.Point(236, 144)
+        Me.passwordTextBox.Location = New System.Drawing.Point(237, 124)
         Me.passwordTextBox.Name = "passwordTextBox"
         Me.passwordTextBox.Size = New System.Drawing.Size(196, 20)
         Me.passwordTextBox.TabIndex = 5
+        Me.ToolTip1.SetToolTip(Me.passwordTextBox, "Super secret password")
         Me.passwordTextBox.UseSystemPasswordChar = True
         '
         'userNameTextBox
         '
         Me.userNameTextBox.Enabled = False
-        Me.userNameTextBox.Location = New System.Drawing.Point(236, 118)
+        Me.userNameTextBox.Location = New System.Drawing.Point(237, 98)
         Me.userNameTextBox.Name = "userNameTextBox"
         Me.userNameTextBox.Size = New System.Drawing.Size(196, 20)
         Me.userNameTextBox.TabIndex = 4
+        Me.ToolTip1.SetToolTip(Me.userNameTextBox, "Username")
         '
         'saveCheckBox
         '
         Me.saveCheckBox.AutoSize = True
-        Me.saveCheckBox.Location = New System.Drawing.Point(62, 181)
+        Me.saveCheckBox.Location = New System.Drawing.Point(62, 178)
         Me.saveCheckBox.Name = "saveCheckBox"
         Me.saveCheckBox.Size = New System.Drawing.Size(399, 19)
         Me.saveCheckBox.TabIndex = 3
@@ -242,7 +254,7 @@ Partial Class ServerPopupSelector
         '
         Me.otherLoginRadioButton.AutoSize = True
         Me.otherLoginRadioButton.Enabled = False
-        Me.otherLoginRadioButton.Location = New System.Drawing.Point(118, 119)
+        Me.otherLoginRadioButton.Location = New System.Drawing.Point(118, 99)
         Me.otherLoginRadioButton.Name = "otherLoginRadioButton"
         Me.otherLoginRadioButton.Size = New System.Drawing.Size(67, 19)
         Me.otherLoginRadioButton.TabIndex = 2
@@ -262,17 +274,59 @@ Partial Class ServerPopupSelector
         Me.windowsAuthRadioButton.Text = "Windows Authentication"
         Me.windowsAuthRadioButton.UseVisualStyleBackColor = True
         '
+        'packagePanel
+        '
+        Me.packagePanel.Controls.Add(Me.folderComboBox)
+        Me.packagePanel.Controls.Add(Me.Label4)
+        Me.packagePanel.Controls.Add(Me.Label3)
+        Me.packagePanel.Controls.Add(Me.projectComboBox)
+        Me.packagePanel.Location = New System.Drawing.Point(0, 27)
+        Me.packagePanel.Name = "packagePanel"
+        Me.packagePanel.Size = New System.Drawing.Size(502, 100)
+        Me.packagePanel.TabIndex = 8
+        Me.packagePanel.Visible = False
+        '
+        'jobPanel
+        '
+        Me.jobPanel.Controls.Add(Me.jobComboBox)
+        Me.jobPanel.Controls.Add(Me.Label5)
+        Me.jobPanel.Cursor = System.Windows.Forms.Cursors.Default
+        Me.jobPanel.Location = New System.Drawing.Point(0, 27)
+        Me.jobPanel.Name = "jobPanel"
+        Me.jobPanel.Size = New System.Drawing.Size(502, 100)
+        Me.jobPanel.TabIndex = 9
+        Me.jobPanel.Visible = False
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.18868!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(58, 23)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(81, 20)
+        Me.Label5.TabIndex = 10
+        Me.Label5.Text = "Job Name"
+        '
+        'jobComboBox
+        '
+        Me.jobComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.jobComboBox.FormattingEnabled = True
+        Me.jobComboBox.Location = New System.Drawing.Point(197, 23)
+        Me.jobComboBox.Name = "jobComboBox"
+        Me.jobComboBox.Size = New System.Drawing.Size(246, 21)
+        Me.jobComboBox.TabIndex = 10
+        '
         'ServerPopupSelector
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(502, 519)
+        Me.ClientSize = New System.Drawing.Size(502, 259)
         Me.Controls.Add(Me.expandablePanel)
         Me.Controls.Add(Me.bottomPanel)
         Me.Controls.Add(Me.topPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximumSize = New System.Drawing.Size(518, 560)
-        Me.MinimumSize = New System.Drawing.Size(518, 360)
+        Me.MinimumSize = New System.Drawing.Size(518, 300)
         Me.Name = "ServerPopupSelector"
         Me.Text = "ServerConnection"
         Me.topPanel.ResumeLayout(False)
@@ -281,6 +335,10 @@ Partial Class ServerPopupSelector
         Me.bottomPanel.ResumeLayout(False)
         Me.expandablePanel.ResumeLayout(False)
         Me.expandablePanel.PerformLayout()
+        Me.packagePanel.ResumeLayout(False)
+        Me.packagePanel.PerformLayout()
+        Me.jobPanel.ResumeLayout(False)
+        Me.jobPanel.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -305,4 +363,9 @@ Partial Class ServerPopupSelector
     Friend WithEvents windowsAuthRadioButton As RadioButton
     Friend WithEvents defaultLabel As Label
     Friend WithEvents useDefaultCheckBox As CheckBox
+    Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents jobPanel As Panel
+    Friend WithEvents jobComboBox As ComboBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents packagePanel As Panel
 End Class

@@ -170,8 +170,6 @@ Public Class SsisViewer
             propertiesDataGridView.Rows.Clear()
             sqlTextBox.Text = ""
             If e.Node Is Nothing Then
-                Debug.Print("Please see projectTreeView.NodeMouseClick... you just clicked an empty node!?!?")
-                sqlTextBox.Text = "Error: See debug log."
                 Exit Sub
             End If
             'Update the properties
@@ -187,7 +185,7 @@ Public Class SsisViewer
                     read = XmlReader.Create(file)
                     read.ReadToFollowing("DTS:Executable")
                     Dim temp As List(Of String) = UpdateSsis.readAttributes(read)
-                    'For 0 to temp.count /2 (This for loop double counts, because I set it up to have src,dest,src,dest)
+                    'For every other 0 to temp.count -1  (This for loop double counts, because I set it up to have src,dest,src,dest, etc)
                     For c = 0 To temp.Count - 1 Step 2
                         propertiesDataGridView.Rows.Add({temp(c), temp(c + 1)})
                     Next
@@ -317,6 +315,7 @@ Public Class SsisViewer
 
     Private Sub AddProjectFromServerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddProjectFromServerToolStripMenuItem.Click
         Dim serverSelect = New ServerPopupSelector
+        serverSelect.packagePanelVisible = True
         serverSelect.ShowDialog()
         'If the user canceled the form
         If serverSelect.DialogResult = DialogResult.Cancel Then

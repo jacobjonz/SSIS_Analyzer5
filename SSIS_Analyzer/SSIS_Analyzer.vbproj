@@ -135,8 +135,6 @@
   <ItemGroup>
     <Compile Include="Classes\Export.vb" />
     <Compile Include="Classes\Import.vb" />
-    <Compile Include="Classes\ScheduleProperties.vb" />
-    <Compile Include="Classes\StepProperties.vb" />
     <Compile Include="Forms\ExecutionId.Designer.vb">
       <DependentUpon>ExecutionId.vb</DependentUpon>
     </Compile>
@@ -267,6 +265,7 @@
   <ItemGroup>
     <Content Include="Resources\DatabaseApplication_32x.png" />
     <Content Include="Resources\Folder open_32xMD_exp.png" />
+    <Content Include="Resources\GitHub_Logo.png" />
     <Content Include="Resources\icon.ico" />
     <None Include="Resources\column.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

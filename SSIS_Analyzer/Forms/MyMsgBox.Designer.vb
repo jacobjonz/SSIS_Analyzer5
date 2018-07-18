@@ -35,7 +35,7 @@ Partial Class MyMsgBox
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(402, 63)
-        Me.TextBox1.TabIndex = 1
+        Me.TextBox1.TabIndex = 2
         Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Button1

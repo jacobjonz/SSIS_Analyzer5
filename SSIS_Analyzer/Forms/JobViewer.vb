@@ -62,13 +62,13 @@ Public Class JobViewer
     Private Sub jobNameComboBox_SelectedValueChanged(sender As Object, e As EventArgs) Handles jobNameComboBox.SelectedValueChanged
         'If there is something in both boxes
         If serverComboBox.Text <> "" And jobNameComboBox.Text <> "" Then
-            statusLabel.Text = "Loading job. . ."
+            'statusLabel.Text = "Loading job. . ."
             scheduleListBox.Items.Clear()
             'Get jobs from server
             Dim conn As ServerConnection = New ServerConnection(serverComboBox.Text)
             Dim server As Microsoft.SqlServer.Management.Smo.Server = New Microsoft.SqlServer.Management.Smo.Server(conn)
             currentJob = server.JobServer.Jobs(jobNameComboBox.Text)
-            statusLabel.Text = "Job loaded"
+            'statusLabel.Text = "Job loaded"
             updateOverview()
         End If
     End Sub
@@ -82,7 +82,7 @@ Public Class JobViewer
         Dim cellValue As String = ""
 
         'Get the message of the current job's enum history
-        cellValue = jobHistoryDataGridView.Rows.Item(row).Cells.Item("Message").Value.ToString
+        cellValue = jobHistoryDataGridView.Rows.Item(row).Cells.Item(2).Value
 
         '
         If InStr(cellValue, "Execution ID:") <> 0 Then
@@ -148,15 +148,22 @@ Public Class JobViewer
         jobHistoryDataGridView.DataSource = currentJob.EnumHistory
 
         'Top execution id
-        Dim myrow As Integer
+        'Reset ExecutionId
+        lastExecutionIDTextBox.Text = ""
+        Dim myrow As Integer    'A row counter
+        'While there is no executionid and the row is less than the number of rows
         Do While lastExecutionIDTextBox.Text = "" And myrow < jobHistoryDataGridView.Rows.Count
+            'Set the execution id equal to getExecutionId
             lastExecutionIDTextBox.Text = getExecutionID(myrow).ToString
+            'Increase the row count
             myrow = myrow + 1
         Loop
     End Sub
 
     Private Sub scheduleListBox_DoubleClick(sender As Object, e As EventArgs) Handles scheduleListBox.DoubleClick
+        'If there is a selected schedule
         If scheduleListBox.SelectedItem IsNot Nothing Then
+            'Display it in my msgbox
             Dim custMsg As New MyMsgBox
             custMsg.title = "Schedule #" & (scheduleListBox.SelectedIndex + 1).ToString
             custMsg.msg = scheduleListBox.SelectedItem.ToString
@@ -165,8 +172,13 @@ Public Class JobViewer
     End Sub
 
     Private Sub commandsListBox_DoubleClick(sender As Object, e As EventArgs) Handles commandsListBox.DoubleClick
+        'If there is a command selected
         If commandsListBox.SelectedItem IsNot Nothing Then
-            MsgBox(commandsListBox.SelectedItem.ToString, Title:="Command #" & (commandsListBox.SelectedIndex + 1).ToString)
+            'Display it in my msgbox
+            Dim custMsg As New MyMsgBox
+            custMsg.msg = commandsListBox.SelectedItem.ToString
+            custMsg.title = "Command #" & (commandsListBox.SelectedIndex + 1).ToString
+            custMsg.Show()
         End If
     End Sub
 
@@ -228,7 +240,7 @@ Public Class JobViewer
                 End If
                 jobOutcomeTextBox.Text = Strings.Left(jobMessage, InStr(Len("The job "), jobMessage, "."))
                 jobDurationTextBox.Text = Format(jobHistoryDataGridView.Rows.Item(jobHistoryDataGridView.SelectedCells(0).RowIndex).Cells.Item(10).Value, "00:00:00")
-                jobMessageTextBox.Text = jobHistoryDataGridView.Rows.Item(jobHistoryDataGridView.SelectedCells(0).RowIndex).Cells.Item(2).Value.ToString.Replace("  ", Chr(13))
+                jobMessageTextBox.Text = jobHistoryDataGridView.Rows.Item(jobHistoryDataGridView.SelectedCells(0).RowIndex).Cells.Item(2).Value.ToString.Replace("  ", vbCrLf)
                 stepIdTextBox.Text = jobHistoryDataGridView.Rows.Item(jobHistoryDataGridView.SelectedCells(0).RowIndex).Cells.Item(3).Value
                 stepNameTextBox.Text = jobHistoryDataGridView.Rows.Item(jobHistoryDataGridView.SelectedCells(0).RowIndex).Cells.Item(4).Value
                 executionIdTextBox.Text = getExecutionID(jobHistoryDataGridView.SelectedCells(0).RowIndex)
@@ -259,6 +271,12 @@ Public Class JobViewer
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        updateOverview()
+        Dim test As New ServerPopupSelector
+        test.jobPanelVisible = True
+        test.Show()
+    End Sub
+
+    Private Sub jobNameComboBox_DoubleClick(sender As Object, e As EventArgs) Handles jobNameComboBox.DoubleClick
+
     End Sub
 End Class

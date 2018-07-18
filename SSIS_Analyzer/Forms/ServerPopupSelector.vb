@@ -3,11 +3,14 @@
 Public Class ServerPopupSelector
 
     Public result As SqlClient.SqlConnectionStringBuilder
-    Dim expandedSize As Integer = 560
-    Dim shrunkSize As Integer = 360
+    Public jobResult As Microsoft.SqlServer.Management.Smo.Agent.Job
+    Dim expandedSize As Integer = 475
+    Dim shrunkSize As Integer = 300
     Dim configFile As Configuration.Configuration = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Configuration.ConfigurationUserLevel.None)
     Dim config As Configuration.KeyValueConfigurationCollection = configFile.AppSettings.Settings
     Dim defaultLogin As String
+    Public jobPanelVisible As Boolean = False
+    Public packagePanelVisible As Boolean = False
 
     Private Sub okBttn_Click(sender As Object, e As EventArgs) Handles okBttn.Click
         'If there is something in the server textbox
@@ -29,14 +32,19 @@ Public Class ServerPopupSelector
                 End If
                 .PersistSecurityInfo = True
             End With
-            'Set the result to the server
-            result = sqlConnectionString
+            If jobPanelVisible Then
+                'set the job result to the selected job
+
+            Else
+                'Set the result to the server
+                result = sqlConnectionString
+            End If
             'Set the result of this form to vbOk
             Me.DialogResult = vbOK
             'Minimize this form (Next form needs to use result and close it)
             Me.WindowState = FormWindowState.Minimized
             'Open the SSIS Viewer back up
-            Application.OpenForms.Item("SsisViewer").Activate()
+            'Application.OpenForms.Item("SsisViewer").Activate()
         Else
             MsgBox("Please select or type a server", Title:="Add Project From Server")
         End If
@@ -65,15 +73,7 @@ Public Class ServerPopupSelector
         'If the Server is something
         If serverComboBox.Text <> "" Then
             Dim sqlConnectionString As New SqlClient.SqlConnectionStringBuilder
-            With sqlConnectionString
-                .DataSource = serverComboBox.Text
-                .IntegratedSecurity = windowsAuthRadioButton.Checked
-                If Not windowsAuthRadioButton.Checked Then
-                    .UserID = userNameTextBox.Text
-                    .Password = passwordTextBox.Text
-                End If
-                .PersistSecurityInfo = True
-            End With
+            sqlConnectionString = getSqlConnectionString(serverComboBox.Text, windowsAuthRadioButton.Checked, userNameTextBox.Text, passwordTextBox.Text)
             'Get a list of folders from the Server
             Dim folders As List(Of String) = Import.getFolders(sqlConnectionString)
             'If the result is empty
@@ -147,7 +147,8 @@ Public Class ServerPopupSelector
     Private Sub ServerPopupSelector_Load(sender As Object, e As EventArgs) Handles Me.Load
         'Make sure I didn't forget to shrink it (Nice to edit in maximized size)
         Me.Height = shrunkSize
-
+        jobPanel.Visible = jobPanelVisible
+        packagePanel.Visible = packagePanelVisible
         'If there is a config setting
         If config("default_server_login") IsNot Nothing Then
             'Get the value
@@ -191,4 +192,49 @@ Public Class ServerPopupSelector
 
         End If
     End Sub
+
+    Private Sub jobComboBox_DropDown(sender As Object, e As EventArgs) Handles jobComboBox.DropDown
+        If serverComboBox.Text <> "" Then
+            'Clear previous options
+            jobComboBox.Items.Clear()
+            Dim sqlConnectionString As SqlClient.SqlConnectionStringBuilder
+            sqlConnectionString = getSqlConnectionString(serverComboBox.Text, windowsAuthRadioButton.Checked, userNameTextBox.Text, passwordTextBox.Text)
+            Dim sqlConnection As SqlClient.SqlConnection = New SqlClient.SqlConnection(sqlConnectionString.ConnectionString)
+            'Get jobs from server
+            Dim conn As Microsoft.SqlServer.Management.Common.ServerConnection = New Microsoft.SqlServer.Management.Common.ServerConnection(sqlConnection)
+
+            Dim test = getJobsFromServerConnection(conn)
+            Dim myArr(test.Count - 1) As Microsoft.SqlServer.Management.Smo.Agent.Job
+            test.CopyTo(myArr, 0)
+            'Debug.Print("Jobs got: " & getJobsFromServerConnection(conn).ToString)
+            jobComboBox.Items.AddRange(myArr)
+        End If
+    End Sub
+
+    Private Function getJobsFromServerConnection(conn As Microsoft.SqlServer.Management.Common.ServerConnection) As Microsoft.SqlServer.Management.Smo.Agent.JobCollection
+        Try
+            conn.Connect()
+            Dim server As Microsoft.SqlServer.Management.Smo.Server = New Microsoft.SqlServer.Management.Smo.Server(conn)
+            getJobsFromServerConnection = server.JobServer.Jobs
+            Return getJobsFromServerConnection
+        Catch ex As Exception
+            Debug.Print("Error in conection: " & ex.Message)
+            Return Nothing
+        End Try
+    End Function
+
+    Private Function getSqlConnectionString(dataSource As String, integratedSecurity As Boolean, Optional username As String = "", Optional password As String = "") As SqlClient.SqlConnectionStringBuilder
+        getSqlConnectionString = New SqlClient.SqlConnectionStringBuilder
+        With getSqlConnectionString
+            .DataSource = dataSource
+            If integratedSecurity Then
+                .IntegratedSecurity = integratedSecurity
+            Else
+                .UserID = username
+                .Password = password
+            End If
+            .PersistSecurityInfo = True
+        End With
+        Return getSqlConnectionString
+    End Function
 End Class

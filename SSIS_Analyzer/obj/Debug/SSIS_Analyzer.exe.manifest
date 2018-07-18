@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="SSIS_Analyzer.exe" version="1.0.0.4" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="SSIS_Analyzer.exe" version="1.0.0.5" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="Resources\icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -289,14 +289,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SSIS_Analyzer.exe" size="278016">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SSIS_Analyzer.exe" size="301056">
       <assemblyIdentity name="SSIS_Analyzer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>6+9/ivA03XFZs9GxyVRYnP6UmneOLeqcggTFnPXfwAg=</dsig:DigestValue>
+        <dsig:DigestValue>E3MNArHjuE+lIQ5W3e46JLBkLcOGtrjx5UBi3OAWvXs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -316,6 +316,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>EwzOEzL3ypWmvBCSnuVd4ibJBvfJGp9ZQqKr/WcJKrM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\GitHub_Logo.png" size="13001">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>j+jkDSH+4UDV62JQCGP97Q5wiUyUfjDZMNo9GJ9s1hc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\icon.ico" size="45451">

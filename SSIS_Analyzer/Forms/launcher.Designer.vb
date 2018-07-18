@@ -22,88 +22,149 @@ Partial Class launcher
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(launcher))
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ssisViewerButton = New System.Windows.Forms.Button()
+        Me.jobViewerButton = New System.Windows.Forms.Button()
+        Me.titleLabel = New System.Windows.Forms.Label()
+        Me.ssisViewerLabel = New System.Windows.Forms.Label()
+        Me.jobViewerLabel = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.oldViewerLabel = New System.Windows.Forms.Label()
+        Me.oldViewerButton = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'Button2
+        'ssisViewerButton
         '
-        Me.Button2.BackColor = System.Drawing.SystemColors.Control
-        Me.Button2.BackgroundImage = CType(resources.GetObject("Button2.BackgroundImage"), System.Drawing.Image)
-        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.Button2.Location = New System.Drawing.Point(198, 110)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(100, 100)
-        Me.Button2.TabIndex = 1
-        Me.Button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.ToolTip1.SetToolTip(Me.Button2, "Project Analyzer")
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.ssisViewerButton.BackColor = System.Drawing.SystemColors.Control
+        Me.ssisViewerButton.BackgroundImage = CType(resources.GetObject("ssisViewerButton.BackgroundImage"), System.Drawing.Image)
+        Me.ssisViewerButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ssisViewerButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.ssisViewerButton.FlatAppearance.BorderColor = System.Drawing.Color.Black
+        Me.ssisViewerButton.FlatAppearance.BorderSize = 0
+        Me.ssisViewerButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonShadow
+        Me.ssisViewerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ssisViewerButton.Location = New System.Drawing.Point(12, 137)
+        Me.ssisViewerButton.Name = "ssisViewerButton"
+        Me.ssisViewerButton.Size = New System.Drawing.Size(50, 50)
+        Me.ssisViewerButton.TabIndex = 1
+        Me.ssisViewerButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.ssisViewerButton.UseVisualStyleBackColor = False
         '
-        'Button3
+        'jobViewerButton
         '
-        Me.Button3.BackColor = System.Drawing.SystemColors.Control
-        Me.Button3.BackgroundImage = CType(resources.GetObject("Button3.BackgroundImage"), System.Drawing.Image)
-        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button3.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.Button3.Location = New System.Drawing.Point(354, 110)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(100, 100)
-        Me.Button3.TabIndex = 2
-        Me.Button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.ToolTip1.SetToolTip(Me.Button3, "Reporting")
-        Me.Button3.UseVisualStyleBackColor = False
+        Me.jobViewerButton.BackColor = System.Drawing.SystemColors.Control
+        Me.jobViewerButton.BackgroundImage = CType(resources.GetObject("jobViewerButton.BackgroundImage"), System.Drawing.Image)
+        Me.jobViewerButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.jobViewerButton.FlatAppearance.BorderColor = System.Drawing.Color.Black
+        Me.jobViewerButton.FlatAppearance.BorderSize = 0
+        Me.jobViewerButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonShadow
+        Me.jobViewerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.jobViewerButton.Location = New System.Drawing.Point(12, 193)
+        Me.jobViewerButton.Name = "jobViewerButton"
+        Me.jobViewerButton.Size = New System.Drawing.Size(50, 50)
+        Me.jobViewerButton.TabIndex = 2
+        Me.jobViewerButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.jobViewerButton.UseVisualStyleBackColor = False
         '
-        'Button4
+        'titleLabel
         '
-        Me.Button4.BackColor = System.Drawing.Color.White
-        Me.Button4.BackgroundImage = CType(resources.GetObject("Button4.BackgroundImage"), System.Drawing.Image)
-        Me.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button4.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.Button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button4.Location = New System.Drawing.Point(35, 110)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(100, 100)
-        Me.Button4.TabIndex = 4
-        Me.Button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.ToolTip1.SetToolTip(Me.Button4, "Old Viewer")
-        Me.Button4.UseVisualStyleBackColor = False
+        Me.titleLabel.Dock = System.Windows.Forms.DockStyle.Top
+        Me.titleLabel.Font = New System.Drawing.Font("MS Outlook", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.titleLabel.Location = New System.Drawing.Point(0, 0)
+        Me.titleLabel.Name = "titleLabel"
+        Me.titleLabel.Size = New System.Drawing.Size(379, 73)
+        Me.titleLabel.TabIndex = 3
+        Me.titleLabel.Text = "SSIS Analyzer"
+        Me.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Label1
+        'ssisViewerLabel
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(174, 46)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(149, 25)
-        Me.Label1.TabIndex = 3
-        Me.Label1.Text = "SSIS Analyzer"
+        Me.ssisViewerLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ssisViewerLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ssisViewerLabel.Location = New System.Drawing.Point(62, 137)
+        Me.ssisViewerLabel.Name = "ssisViewerLabel"
+        Me.ssisViewerLabel.Size = New System.Drawing.Size(299, 50)
+        Me.ssisViewerLabel.TabIndex = 6
+        Me.ssisViewerLabel.Text = "SSIS Package Viewer"
+        Me.ssisViewerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'jobViewerLabel
+        '
+        Me.jobViewerLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.jobViewerLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.jobViewerLabel.Location = New System.Drawing.Point(62, 193)
+        Me.jobViewerLabel.Name = "jobViewerLabel"
+        Me.jobViewerLabel.Size = New System.Drawing.Size(299, 50)
+        Me.jobViewerLabel.TabIndex = 7
+        Me.jobViewerLabel.Text = "Job Viewer"
+        Me.jobViewerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Button1
+        '
+        Me.Button1.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.GitHub_Logo
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Button1.Location = New System.Drawing.Point(292, 247)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 8
+        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
+        '
+        'oldViewerLabel
+        '
+        Me.oldViewerLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.oldViewerLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.oldViewerLabel.Location = New System.Drawing.Point(62, 81)
+        Me.oldViewerLabel.Name = "oldViewerLabel"
+        Me.oldViewerLabel.Size = New System.Drawing.Size(299, 50)
+        Me.oldViewerLabel.TabIndex = 10
+        Me.oldViewerLabel.Text = "Old Viewer"
+        Me.oldViewerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'oldViewerButton
+        '
+        Me.oldViewerButton.BackColor = System.Drawing.SystemColors.Control
+        Me.oldViewerButton.BackgroundImage = CType(resources.GetObject("oldViewerButton.BackgroundImage"), System.Drawing.Image)
+        Me.oldViewerButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.oldViewerButton.FlatAppearance.BorderColor = System.Drawing.Color.Black
+        Me.oldViewerButton.FlatAppearance.BorderSize = 0
+        Me.oldViewerButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonShadow
+        Me.oldViewerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.oldViewerButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.oldViewerButton.Location = New System.Drawing.Point(12, 81)
+        Me.oldViewerButton.Name = "oldViewerButton"
+        Me.oldViewerButton.Size = New System.Drawing.Size(50, 50)
+        Me.oldViewerButton.TabIndex = 9
+        Me.oldViewerButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.oldViewerButton.UseVisualStyleBackColor = False
         '
         'launcher
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(486, 254)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
+        Me.ClientSize = New System.Drawing.Size(379, 282)
+        Me.Controls.Add(Me.oldViewerLabel)
+        Me.Controls.Add(Me.oldViewerButton)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.jobViewerLabel)
+        Me.Controls.Add(Me.ssisViewerLabel)
+        Me.Controls.Add(Me.titleLabel)
+        Me.Controls.Add(Me.jobViewerButton)
+        Me.Controls.Add(Me.ssisViewerButton)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "launcher"
         Me.Text = "launcher"
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents ToolTip1 As ToolTip
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Button4 As Button
+    Friend WithEvents ssisViewerButton As Button
+    Friend WithEvents jobViewerButton As Button
+    Friend WithEvents titleLabel As Label
+    Friend WithEvents ssisViewerLabel As Label
+    Friend WithEvents jobViewerLabel As Label
+    Friend WithEvents Button1 As Button
+    Friend WithEvents oldViewerLabel As Label
+    Friend WithEvents oldViewerButton As Button
 End Class

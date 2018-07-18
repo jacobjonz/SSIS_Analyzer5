@@ -44,15 +44,15 @@ Partial Class SsisViewer
         Me.sqlStatmentsLabel = New System.Windows.Forms.Label()
         Me.sqlTextBox = New System.Windows.Forms.RichTextBox()
         Me.verticalMainSplitContainer = New System.Windows.Forms.SplitContainer()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.propertiesDataGridView = New System.Windows.Forms.DataGridView()
         Me.PropertyName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PropertyValue = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.columnDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.lowerSplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.lowerSplitContainer.Panel1.SuspendLayout()
         Me.lowerSplitContainer.Panel2.SuspendLayout()
@@ -302,6 +302,17 @@ Partial Class SsisViewer
         Me.verticalMainSplitContainer.SplitterDistance = 302
         Me.verticalMainSplitContainer.TabIndex = 12
         '
+        'Label1
+        '
+        Me.Label1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(3, 3)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(296, 29)
+        Me.Label1.TabIndex = 5
+        Me.Label1.Text = "Properties"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'propertiesDataGridView
         '
         Me.propertiesDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -332,6 +343,17 @@ Partial Class SsisViewer
         Me.PropertyValue.Name = "PropertyValue"
         Me.PropertyValue.ReadOnly = True
         '
+        'Label2
+        '
+        Me.Label2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(3, 3)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(338, 29)
+        Me.Label2.TabIndex = 6
+        Me.Label2.Text = "Column Mapping"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'columnDataGridView
         '
         Me.columnDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -361,28 +383,6 @@ Partial Class SsisViewer
         Me.DataGridViewTextBoxColumn2.HeaderText = "Destination Column"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        '
-        'Label1
-        '
-        Me.Label1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(3, 3)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(296, 29)
-        Me.Label1.TabIndex = 5
-        Me.Label1.Text = "Properties"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label2
-        '
-        Me.Label2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(3, 3)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(338, 29)
-        Me.Label2.TabIndex = 6
-        Me.Label2.Text = "Column Mapping"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'SsisViewer
         '
